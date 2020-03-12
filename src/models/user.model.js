@@ -1,22 +1,12 @@
-const sql = require("./db.js");
-
-// constructor
-const User = function(user) {
-    this.nom = user.nom;
-    this.prenom = customer.prenom;
-    this.age = customer.age;
-  };
-  
-User.getAll = result => {
-    sql.query(" SELECT * FROM users ", (err, res) => {
-        if (err) {
-            console.log("error: " , err);
-            result (null, err);
-            return;
-        }
-        console.log("user : ", res);
-        result(null, res);
+module.exports = (sequelize, Sequelize) => {
+    const User = sequelize.define("users", {
+      matricule: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      }
     });
-};
-
-module.exports = User;
+  
+    return User;
+  };
